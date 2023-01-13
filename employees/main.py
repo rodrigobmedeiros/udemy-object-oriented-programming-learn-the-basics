@@ -5,18 +5,30 @@ from employee import Attendant
 from employee import Employee
 
 employees = [
-    Manager('Vera', 2000),
-    Attendant("chuck", 1800),
-    Attendant('Samantha', 1800),
-    Cook('Roberto', 2100),
-    Mechanic('Dave', 2200),
-    Mechanic('Tina', 2300),
-    Mechanic('Ringo', 1900)
+    Manager('Vera', 'Schimidt', 2000),
+    Attendant("chuck", 'Norris', 1800),
+    Attendant('Samantha', 'Carrington', 1800),
+    Cook('Roberto', 'Jacketti', 2100),
+    Mechanic('Dave', 'DreiBig', 2200),
+    Mechanic('Tina', 'River', 2300),
+    Mechanic('Ringo', 'Rama', 1900),
+    Mechanic('Chuck', 'Rainey', 1900)
 ]
 
-for employee in employees:
-    print(employee)
+def print_accouting_report():
+    print("Accouting Report")
+    print("================")
+    for employee in employees:
+        print(f"{employee.get_full_name()}, {employee.salary}")
+    print()
 
+def print_staffing_report():
+    print("Staffing Report")
+    print("===============")
+    for employee in employees:
+        print(f"{employee.get_full_name()}, {employee.job_title}")
+    print()
 
-employee = Employee('Rodrigo', 2000)
-print(employee)
+print_accouting_report()
+
+print_staffing_report()
