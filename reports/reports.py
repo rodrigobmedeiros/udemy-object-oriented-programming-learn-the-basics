@@ -26,3 +26,12 @@ class StaffingReport(BaseReport):
         for employee in self.employees:
             print(f"{employee.get_full_name()}, {employee.job_title}")
         print()
+
+class SchedulingReport(BaseReport):
+
+    def print_report(self):
+        print("Scheduling Report")
+        print("===============")
+        for employee in self.employees:
+            print(f"{employee.get_full_name()}, {employee.shift.get_shift_info()}")
+        print()

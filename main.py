@@ -5,20 +5,29 @@ from employees.employee import Attendant
 
 from reports.reports import AccountingReport
 from reports.reports import StaffingReport
+from reports.reports import SchedulingReport
+
+from shift.shift import MorningShift
+from shift.shift import AfternoonShift
+from shift.shift import NightShift
 
 employees = [
-    Manager('Vera', 'Schimidt', 2000),
-    Attendant("chuck", 'Norris', 1800),
-    Attendant('Samantha', 'Carrington', 1800),
-    Cook('Roberto', 'Jacketti', 2100),
-    Mechanic('Dave', 'DreiBig', 2200),
-    Mechanic('Tina', 'River', 2300),
-    Mechanic('Ringo', 'Rama', 1900),
-    Mechanic('Chuck', 'Rainey', 1900)
+    Manager('Vera', 'Schimidt', 2000, MorningShift()),
+    Attendant("chuck", 'Norris', 1800, MorningShift()),
+    Attendant('Samantha', 'Carrington', 1800, AfternoonShift()),
+    Cook('Roberto', 'Jacketti', 2100, AfternoonShift()),
+    Mechanic('Dave', 'DreiBig', 2200, MorningShift()),
+    Mechanic('Tina', 'River', 2300, AfternoonShift()),
+    Mechanic('Ringo', 'Rama', 1900, AfternoonShift()),
+    Mechanic('Chuck', 'Rainey', 1900, NightShift())
 ]
 
-accouting_report = AccountingReport(employees)
-staffing_report = StaffingReport(employees)
+reports = [
+    AccountingReport(employees),
+    StaffingReport(employees),
+    SchedulingReport(employees)
+]
 
-accouting_report.print_report()
-staffing_report.print_report()
+
+for report in reports:
+    report.print_report()
